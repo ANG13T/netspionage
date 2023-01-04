@@ -1,5 +1,11 @@
-import scapy.all as scapy
+from scapy.all import arping, ARP, Ether, Scapy_Exception, scapy
 import argparse
+import socket
+
+class DiscoveredDevice:
+    mac_address: str
+    ip_address: str
+    hostname: str
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -13,6 +19,30 @@ def get_args():
         #Code to handle if interface is not specified
         parser.error("[-] Please specify an IP Address or Addresses, use --help for more info.")
     return options
+
+
+def new_scan(network_id: str, verbose: bool = False):
+    print("hi")
+    scan_data = []
+
+    try:
+        answered, _ = arping(network_id, verbose=0)
+    except Scapy_Exception as exception:  # This happens when running the module using python in the cmd
+        # Interface is invalid (no pcap match found) !
+        print("Npcap must be installed for Windows hosts")
+    except OSError as exception:  # This happens when running the application using the vs code launch config
+        # b'Error opening adapter: The system cannot find the device specified. (20)'
+        print("Npcap must be installed for Windows hosts")
+        
+    for s, r in answered:
+        mac_address = r[Ether].src
+        ip_address = s[ARP].pdst
+        print("ip", ip_address)
+        hostname = socket.getfqdn(ip_address)
+
+        scan_data.append(DiscoveredDevice(mac_address, ip_address, hostname))
+
+    return scan_data
   
 def scan(ip):
     arp_req_frame = scapy.ARP(pdst = ip)
@@ -36,5 +66,5 @@ def display_result(result):
   
 
 options = get_args()
-scanned_output = scan(options.target)
+scanned_output = new_scan(options.target)
 display_result(scanned_output)
