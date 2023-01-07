@@ -1,70 +1,66 @@
-from scapy.all import arping, ARP, Ether, Scapy_Exception, scapy
-import argparse
-import socket
+#!bin/bash sudo python
+import optparse
 
-class DiscoveredDevice:
-    mac_address: str
-    ip_address: str
-    hostname: str
-
-def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-t', '--target', dest='target', help='Target IP Address/Adresses')
-    options = parser.parse_args()
-
-    #Check for errors i.e if the user does not specify the target IP Address
-    #Quit the program if the argument is missing
-    #While quitting also display an error message
-    if not options.target:
-        #Code to handle if interface is not specified
-        parser.error("[-] Please specify an IP Address or Addresses, use --help for more info.")
-    return options
+import scapy.all as scapy
+from scapy.layers.inet import IP, ICMP
 
 
-def new_scan(network_id: str, verbose: bool = False):
-    print("hi")
-    scan_data = []
+def getArguments():
+    parser = optparse.OptionParser()
+    parser.add_option("-t", "--target", dest="target", help="target IP/ IP range")
+    args_options, arguments = parser.parse_args()
+    return args_options
 
+
+def createPacket(ip):
+    arp_request = scapy.ARP(pdst=ip)  # create a ARP request object by scapy
+    broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")  # We have set the destination
+    arp_request_broadcast = broadcast / arp_request
+    return (arp_request_broadcast)
+
+
+def transmitPacket(packet):
+    success_list, failure_list = scapy.srp(packet, timeout=1)
+    return success_list
+
+
+def getOS(ip_addr):
+    ttl_values = {32: "Windows", 60: "MAC OS", 64: "Linux", 128: "Windows", 255: "Linux 2.4 Kernal"}
     try:
-        answered, _ = arping(network_id, verbose=0)
-    except Scapy_Exception as exception:  # This happens when running the module using python in the cmd
-        # Interface is invalid (no pcap match found) !
-        print("Npcap must be installed for Windows hosts")
-    except OSError as exception:  # This happens when running the application using the vs code launch config
-        # b'Error opening adapter: The system cannot find the device specified. (20)'
-        print("Npcap must be installed for Windows hosts")
-        
-    for s, r in answered:
-        mac_address = r[Ether].src
-        ip_address = s[ARP].pdst
-        print("ip", ip_address)
-        hostname = socket.getfqdn(ip_address)
+        ans = scapy.sr1(IP(dst=str(ip_addr)) / ICMP(), timeout=1, verbose=0)
+        if ans:
+            if ans.ttl in ttl_values:
+                return ttl_values.get(ans.ttl)
+            else:
+                return "could not figure the OS version"
+        else:
+            return "Packets could not send successfully"
+    except:
+        return "could not figure the OS version"
 
-        scan_data.append(DiscoveredDevice(mac_address, ip_address, hostname))
 
-    return scan_data
-  
-def scan(ip):
-    arp_req_frame = scapy.ARP(pdst = ip)
 
-    broadcast_ether_frame = scapy.Ether(dst = "ff:ff:ff:ff:ff:ff")
-    
-    broadcast_ether_arp_req_frame = broadcast_ether_frame / arp_req_frame
+def parseResponse(success_list):
+    targets = []
+    for success in success_list:
+        entry = {'ip': success[1].psrc, 'mac': success[1].hwsrc}
+        targets.append(entry)
+    return targets
 
-    answered_list = scapy.srp(broadcast_ether_arp_req_frame, timeout = 1, verbose = False)[0]
-    result = []
-    for i in range(0,len(answered_list)):
-        client_dict = {"ip" : answered_list[i][1].psrc, "mac" : answered_list[i][1].hwsrc}
-        result.append(client_dict)
 
-    return result
-  
-def display_result(result):
-    print("-----------------------------------\nIP Address\tMAC Address\n-----------------------------------")
-    for i in result:
-        print("{}\t{}".format(i["ip"], i["mac"]))
-  
+def print_analysis(element_entries):
+    print("end")
+    print("IP\t\t\tMAC Address\t\t\tOPERATING SYSTEM")
+    print("." * 100)
+    for element in entries:
+        print(element["ip"] + "\t\t" + element['mac'] + "\t\t" + getOS(element["ip"]) + "\n")
 
-options = get_args()
-scanned_output = new_scan(options.target)
-display_result(scanned_output)
+
+options = getArguments()
+
+if options.target is not None:
+    print("str")
+    broadcast_packets = createPacket(options.target)
+    success_packets = transmitPacket(broadcast_packets)
+    entries = parseResponse(success_packets)
+    print_analysis(entries)
