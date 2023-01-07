@@ -4,7 +4,6 @@ import optparse
 import scapy.all as scapy
 from scapy.layers.inet import IP, ICMP
 
-
 def getArguments():
     parser = optparse.OptionParser()
     parser.add_option("-t", "--target", dest="target", help="target IP/ IP range")
