@@ -1,4 +1,4 @@
-from netspionage.updater import update
+from core.updater import update
 
 def prompt_display():  
     while 1:
