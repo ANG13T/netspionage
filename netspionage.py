@@ -37,14 +37,13 @@ if __name__ == '__main__':
                   print(print_banner())
                   print(print_details())
                   print(print_menu())
-                #   from core import repl_prompt
+                  from netspionage import prompts
            except ModuleNotFoundError:
-                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version, Please install using: python3 setup.py install')
+                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version. Please install using: python3 setup.py install')
                   quit()
     else:
            try:
-                #   from core import repl_prompt
-                print('hi')
+                from netspionage import prompts
            except ImportError:
-                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version,, Please install using: python3 setup.py install')
+                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version. Please install using: python3 setup.py install')
                   quit()

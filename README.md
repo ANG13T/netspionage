@@ -8,3 +8,6 @@ via virtualenv
 `source netspionage_env/bin/activate`
 `sudo ./netspionage_env/bin/python python -m pip install -r requirements.txt --use`
 `sudo ./netspionage_env/bin/python python3 netspionage/main.py -t 10.18.248.181/24`
+
+upload to 
+pypi
