@@ -55,6 +55,7 @@ def prompt_display():
             pass
 
 try:
-    prompt_display()
+    # prompt_display()
+    print('sd')
 except KeyboardInterrupt:
     quit('\nTill next time!')
