@@ -21,14 +21,14 @@ def print_details():
 
 def print_menu():
     return ("""
-ENTER 0 - 5 TO SELECT OPTIONS
+ ENTER 0 - 5 TO SELECT OPTIONS
 
-1.  SCANNING                           Enumerate  information  from  IP Address
-2.  RECONNAISSANCE                       Gather  information  about  given DOMAIN
-3.  DETECTION                  Gather  information  about   Phonenumber
-4.  UPDATE                      Map DNS  records associated  with target
+ 1.  SCANNING                   Scan for IPs, nearby APs, ports, hosts, and more
+ 2.  RECONNAISSANCE             Gather  information  about nearby MAC addresses
+ 3.  DETECTION                  Detect for ARP Spoofing and SYN Flood attacks
+ 4.  UPDATE                     Update to the latest version of netspionage
 
-5. EXIT                         Exit from  ReconSpider  to your terminal
+ 5. EXIT                        Exit from netspionage to your terminal
        """)
 
 if __name__ == '__main__':
