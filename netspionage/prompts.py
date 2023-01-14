@@ -1,3 +1,4 @@
+from netspionage.updater import update
 
 def prompt_display():  
     while 1:
@@ -13,7 +14,9 @@ def prompt_display():
 
         if choice == 1:
             while 1:
-                ip = prompt("IP >> ")
+                print("\n1. Network Scanner \n2. WiFi Scanner \n3. Port Scanner \n4. Host Scanner\n")
+                resp = input("CHOICE >> ")
+                print(resp)
                 break
             # shodan_host(ip)
             # censys_ip(ip)
@@ -21,7 +24,9 @@ def prompt_display():
 
         if choice == 2:
             while 1:
-                ip = prompt("IP >> ")
+                print("\n1. Choose MAC Address \n2. Input MAC Address")
+                resp = input("CHOICE >> ")
+                print(resp)
                 break
             # shodan_host(ip)
             # censys_ip(ip)
@@ -29,7 +34,9 @@ def prompt_display():
 
         if choice == 3:
             while 1:
-                ip = prompt("IP >> ")
+                print("\n1. ARP Spoof Attack \n2. SYN Attack\n")
+                resp = input("CHOICE >> ")
+                print(resp)
                 break
             # shodan_host(ip)
             # censys_ip(ip)
