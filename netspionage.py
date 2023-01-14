@@ -21,7 +21,7 @@ def print_details():
 
 def print_menu():
     return ("""
- ENTER 0 - 5 TO SELECT OPTIONS
+ ENTER 1 - 5 TO SELECT OPTIONS
 
  1.  SCANNING                   Scan for IPs, nearby APs, ports, hosts, and more
  2.  RECONNAISSANCE             Gather  information  about nearby MAC addresses
