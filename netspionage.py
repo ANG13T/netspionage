@@ -1,15 +1,20 @@
 import sys
 
-def banner():
+def print_banner():
        return ("""
-__________                               _________       __     ___
-\______   \ ____   ____  ____   ____    /   _____/_____ |__| __| _/___________
- |       _// __ \_/ ___\/  _ \ /    \   \_____  \\\____ \|  |/ __ |/ __ \_  __ \\
- |    |   \  ___/\  \__(  <_> )   |  \  /        \  |_> >  / /_/ \  ___/|  | \/
- |____|_  /\___  >\___  >____/|___|  / /_______  /   __/|__\____ |\___  >__|
-        \/     \/     \/           \/          \/|__|           \/    \/
+                  __             _                            
+      ____  ___  / /__________  (_)___  ____  ____ _____ ____ 
+     / __ \/ _ \/ __/ ___/ __ \/ / __ \/ __ \/ __ `/ __ `/ _ \\
+    / / / /  __/ /_(__  ) /_/ / / /_/ / / / / /_/ / /_/ /  __/
+   /_/ /_/\___/\__/____/ .___/_/\____/_/ /_/\__,_/\__, /\___/ 
+                      /_/                        /____/           
 """)
-def menu():
+
+def print_details():
+    return("   Created by Angelina Tsuboi [angelinatsuboi.net] V.0.0.1")
+
+
+def print_menu():
     return ("""
 ENTER 0 - 13 TO SELECT OPTIONS
 
@@ -34,14 +39,16 @@ ENTER 0 - 13 TO SELECT OPTIONS
 if __name__ == '__main__':
     if sys.version_info[0] > 2:
            try:
-                  print(banner())
-                  from core import repl_prompt
+                  print(print_banner())
+                  print(print_details())
+                #   from core import repl_prompt
            except ModuleNotFoundError:
                   print('\nSeems like you haven\'t installed Requirements or You are not using python3 version, Please install using: python3 setup.py install')
                   quit()
     else:
            try:
-                  from core import repl_prompt
+                #   from core import repl_prompt
+                print('hi')
            except ImportError:
                   print('\nSeems like you haven\'t installed Requirements or You are not using python3 version,, Please install using: python3 setup.py install')
                   quit()
