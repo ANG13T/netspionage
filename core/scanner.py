@@ -2,6 +2,7 @@ import scapy.all as scapy
 from scapy.layers.inet import IP, ICMP
 from threading import Thread
 import pandas
+import socket
 import os
 import time
 
@@ -13,7 +14,7 @@ def scanner_choice(choice, target):
         wifi_scanner()
         return()
     elif choice == '3':
-        port_scanner()
+        port_scanner(target)
         return()
     elif choice == '4':
         host_scanner()
@@ -38,8 +39,8 @@ def wifi_scanner():
     initiate_wifi_scan()
 
 
-def port_scanner():
-    print('port')
+def port_scanner(target):
+    scan_ports(target)
 
 def host_scanner():
     print('host')
@@ -141,3 +142,33 @@ def change_channel():
         # switch channel from 1 to 14 each 0.5s
         ch = ch % 14 + 1
         time.sleep(0.5)
+
+# Port Scanner
+
+# TODO: make threaded port scanner to increase speed [https://www.thepythoncode.com/article/make-port-scanner-python]
+def scan_ports(host):
+    open_count = 0
+    close_count = 0
+    for port in range(1, 1025):
+        if check_port(host, port):
+            open_count += 1
+            print(f"\n [+] {host}:{port} is OPEN!")
+        else:
+            close_count += 1
+            print(f"\n [!] {host}:{port} is CLOSED!")
+    print(f"\n {open_count} OPEN Ports \n {close_count} CLOSED Ports")
+
+def check_port(host, port):
+    # creates a new socket
+    s = socket.socket()
+    try:
+        # tries to connect to host using that port
+        s.connect((host, port))
+        # make timeout if you want it a little faster ( less accuracy )
+        # s.settimeout(0.2)
+    except:
+        # cannot connect, port is closed
+        return False
+    else:
+        # the connection was established, port is open!
+        return True

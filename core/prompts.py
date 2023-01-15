@@ -36,7 +36,7 @@ def prompt_display():
                 print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n 4. Host Scanner\n")
                 resp = input(" SCAN INPUT >> ")
                 target = ""
-                if resp == "1":
+                if resp == "1" or resp == "3":
                     target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 print(resp)
                 break
