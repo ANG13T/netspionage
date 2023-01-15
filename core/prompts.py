@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 # from core.updater import update
+from prompt_toolkit import prompt
 
 def prompt_display():  
     while 1:
-        user_input = prompt("\nnetspionage >> ")
+        user_input = prompt("\n ENTER INPUT >> ")
         if len(user_input)==0:
             print("\n")
             continue
@@ -16,8 +17,8 @@ def prompt_display():
 
         if choice == 1:
             while 1:
-                print("\n1. Network Scanner \n2. WiFi Scanner \n3. Port Scanner \n4. Host Scanner\n")
-                resp = input("CHOICE >> ")
+                print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n 4. Host Scanner\n")
+                resp = input(" ENTER INPUT >> ")
                 print(resp)
                 break
             # shodan_host(ip)
@@ -26,8 +27,8 @@ def prompt_display():
 
         if choice == 2:
             while 1:
-                print("\n1. Choose MAC Address \n2. Input MAC Address")
-                resp = input("CHOICE >> ")
+                print("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
+                resp = input(" ENTER INPUT >> ")
                 print(resp)
                 break
             # shodan_host(ip)
@@ -36,8 +37,8 @@ def prompt_display():
 
         if choice == 3:
             while 1:
-                print("\n1. ARP Spoof Attack \n2. SYN Attack\n")
-                resp = input("CHOICE >> ")
+                print("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
+                resp = input(" ENTER INPUT >> ")
                 print(resp)
                 break
             # shodan_host(ip)
@@ -51,13 +52,12 @@ def prompt_display():
             continue
 
         elif choice == 5:
-            exit('\nTill next time!')
+            exit('\n Till next time!')
 
         else:
             pass
 
 try:
-    # prompt_display()
-    print('sd')
+    prompt_display()
 except KeyboardInterrupt:
-    quit('\nTill next time!')
+    quit('\n Till next time!')
