@@ -33,7 +33,7 @@ def prompt_display():
 
         if choice == 1:
             while 1:
-                print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n 4. Host Scanner\n")
+                print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
                 resp = input(" SCAN INPUT >> ")
                 target = ""
                 if resp == "1" or resp == "3":

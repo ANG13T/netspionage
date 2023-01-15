@@ -16,9 +16,6 @@ def scanner_choice(choice, target):
     elif choice == '3':
         port_scanner(target)
         return()
-    elif choice == '4':
-        host_scanner()
-        return()
     else:
         exit()
 
@@ -26,6 +23,10 @@ def scanner_choice(choice, target):
 # Change to the appropriate interface
 interface = "wlan0mon"
 wifi_scan_timeout = 10
+
+# Port Scanner Configs
+scan_start = 1
+scan_end = 1025
 
 def network_scanner(target):
     broadcast_packets = create_packet(target)
@@ -41,9 +42,6 @@ def wifi_scanner():
 
 def port_scanner(target):
     scan_ports(target)
-
-def host_scanner():
-    print('host')
 
 
 # Network Scanner
@@ -149,7 +147,7 @@ def change_channel():
 def scan_ports(host):
     open_count = 0
     close_count = 0
-    for port in range(1, 1025):
+    for port in range(scan_start, scan_end):
         if check_port(host, port):
             open_count += 1
             print(f"\n [+] {host}:{port} is OPEN!")
@@ -159,7 +157,6 @@ def scan_ports(host):
     print(f"\n {open_count} OPEN Ports \n {close_count} CLOSED Ports")
 
 def check_port(host, port):
-    # creates a new socket
     s = socket.socket()
     try:
         # tries to connect to host using that port
