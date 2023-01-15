@@ -1,4 +1,6 @@
-from core.updater import update
+# -*- coding: utf-8 -*-
+
+# from core.updater import update
 
 def prompt_display():  
     while 1:
@@ -45,7 +47,7 @@ def prompt_display():
         elif choice == 4:
             while 1:
                 break
-            update()
+            # update()
             continue
 
         elif choice == 5:
