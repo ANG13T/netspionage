@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
-
 # from core.updater import update
 from prompt_toolkit import prompt
+from core.scanner import scanner_choice
 
 def prompt_display():  
     while 1:
@@ -21,7 +20,7 @@ def prompt_display():
                 resp = input(" ENTER INPUT >> ")
                 print(resp)
                 break
-            # shodan_host(ip)
+            scanner_choice(resp)
             # censys_ip(ip)
             continue
 
