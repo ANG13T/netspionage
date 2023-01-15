@@ -18,10 +18,13 @@ def prompt_display():
             while 1:
                 print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n 4. Host Scanner\n")
                 resp = input(" SCAN INPUT >> ")
-                target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                target = ""
+                if resp == "1":
+                    target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 print(resp)
                 break
             scanner_choice(resp, target)
+            prompt_display()
             # censys_ip(ip)
             continue
 
@@ -33,6 +36,7 @@ def prompt_display():
                 break
             # shodan_host(ip)
             # censys_ip(ip)
+            prompt_display()
             continue
 
         if choice == 3:
@@ -43,12 +47,14 @@ def prompt_display():
                 break
             # shodan_host(ip)
             # censys_ip(ip)
+            prompt_display()
             continue
 
         elif choice == 4:
             while 1:
                 break
             # update()
+            prompt_display()
             continue
 
         elif choice == 5:

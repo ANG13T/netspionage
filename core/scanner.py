@@ -1,5 +1,9 @@
 import scapy.all as scapy
 from scapy.layers.inet import IP, ICMP
+from threading import Thread
+import pandas
+import os
+import time
 
 def scanner_choice(choice, target):
     if choice == '1':
@@ -17,14 +21,22 @@ def scanner_choice(choice, target):
     else:
         exit()
 
+# Wifi Scanner Configs
+# Change to the appropriate interface
+interface = "wlan0mon"
+wifi_scan_timeout = 10
+
 def network_scanner(target):
     broadcast_packets = create_packet(target)
     success_packets = transmit_packet(broadcast_packets)
     entries = parse_response(success_packets)
     print_analysis(entries)
 
+# TODO: test with wifi adapter
 def wifi_scanner():
-    print('wifi')
+    config_dataframe()
+    initiate_wifi_scan()
+
 
 def port_scanner():
     print('port')
@@ -76,4 +88,56 @@ def print_analysis(element_entries):
     for element in element_entries:
         print(element["ip"] + "\t\t" + element['mac'] + "\t\t" + get_os(element["ip"]) + "\n")
     print("." * 100)
-    print(" Scan Complete!")
+    print("\n Scan Complete!")
+
+# WiFi Scanner
+
+def initiate_wifi_scan():
+    # start the thread that prints all the networks
+    printer = Thread(target=print_all_networks)
+    printer.daemon = True
+    printer.start()
+    # start the channel changer
+    channel_changer = Thread(target=change_channel)
+    channel_changer.daemon = True
+    channel_changer.start()
+    # start sniffing
+    scapy.sniff(prn=extract_network_info, iface=interface)
+
+def config_dataframe():
+    networks = pandas.DataFrame(columns=["BSSID", "SSID", "dBm_Signal", "Channel", "Crypto"])
+    networks.set_index("BSSID", inplace=True)
+
+def extract_network_info(packet):
+    if packet.haslayer(Dot11Beacon):
+        # extract the MAC address of the network
+        bssid = packet[Dot11].addr2
+        # get the name of it
+        ssid = packet[Dot11Elt].info.decode()
+        try:
+            dbm_signal = packet.dBm_AntSignal
+        except:
+            dbm_signal = "N/A"
+        # extract network stats
+        stats = packet[Dot11Beacon].network_stats()
+        # get the channel of the AP
+        channel = stats.get("channel")
+        # get the crypto
+        crypto = stats.get("crypto")
+        networks.loc[bssid] = (ssid, dbm_signal, channel, crypto)
+
+
+def print_all_networks():
+    while True:
+        os.system("clear")
+        print(networks)
+        time.sleep(0.5)
+
+
+def change_channel():
+    ch = 1
+    while True:
+        os.system(f"iwconfig {interface} channel {ch}")
+        # switch channel from 1 to 14 each 0.5s
+        ch = ch % 14 + 1
+        time.sleep(0.5)
