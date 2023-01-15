@@ -2,16 +2,33 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 
+def menu_display():
+    return ("""
+ ENTER 1 - 5 TO SELECT OPTIONS
+
+ 1.  SCANNING                   Scan for IPs, nearby APs, ports, hosts, and more
+ 2.  RECONNAISSANCE             Gather  information  about nearby MAC addresses
+ 3.  DETECTION                  Detect for ARP Spoofing and SYN Flood attacks
+ 4.  UPDATE                     Update to the latest version of netspionage
+
+ 5. EXIT                        Exit from netspionage to your terminal
+       """)
+
 def prompt_display():  
+    print(menu_display())
     while 1:
         user_input = prompt("\n netspionage >> ")
         if len(user_input)==0:
             print("\n")
             continue
+        if user_input == "help" or user_input == "options" or user_input == "commands":
+            print(menu_display())
+            continue
+
         try:
             choice = int(user_input)
         except ValueError:
-            print("\n")
+            print("\n Invalid Command! Type `help` to see all options")
             continue
 
         if choice == 1:
@@ -24,8 +41,6 @@ def prompt_display():
                 print(resp)
                 break
             scanner_choice(resp, target)
-            prompt_display()
-            # censys_ip(ip)
             continue
 
         if choice == 2:
@@ -36,7 +51,6 @@ def prompt_display():
                 break
             # shodan_host(ip)
             # censys_ip(ip)
-            prompt_display()
             continue
 
         if choice == 3:
@@ -47,14 +61,12 @@ def prompt_display():
                 break
             # shodan_host(ip)
             # censys_ip(ip)
-            prompt_display()
             continue
 
         elif choice == 4:
             while 1:
                 break
             # update()
-            prompt_display()
             continue
 
         elif choice == 5:
