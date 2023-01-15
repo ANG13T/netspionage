@@ -1,6 +1,7 @@
 # from core.updater import update
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
+from core.reconnaissance import recon_choice
 
 def menu_display():
     return ("""
@@ -38,7 +39,6 @@ def prompt_display():
                 target = ""
                 if resp == "1" or resp == "3":
                     target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
-                print(resp)
                 break
             scanner_choice(resp, target)
             continue
@@ -47,10 +47,12 @@ def prompt_display():
             while 1:
                 print("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
                 resp = input(" RECON INPUT >> ")
-                print(resp)
+                target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                manual_input = ""
+                if resp == "2":
+                    manual_input = input(" MAC ADDRESS (Eg:08:00:69:02:01:FC) >> ")
                 break
-            # shodan_host(ip)
-            # censys_ip(ip)
+            recon_choice(resp, target, manual_input)
             continue
 
         if choice == 3:
