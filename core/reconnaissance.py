@@ -30,14 +30,13 @@ def address_api_call(address):
             print("No MAC Address Found!")
             return()
         transcribe_api_results(json_object)
-        print("")
     else:
         print("Error: Something Went Wrong")
 
 def transcribe_api_results(json_object):
     for key in json_object:
         value = json_object[key]
-        print(f"{snake_case_to_normal(key)} = {value}")
+        print(f"\n {snake_case_to_normal(key)}: {value}")
 
 def snake_case_to_normal(snake_text):
     temp = snake_text.split('_')
