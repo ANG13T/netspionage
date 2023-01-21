@@ -19,13 +19,13 @@ def choose_mac_address(target):
     return()
 
 def input_mac_address(manual_input):
-    address_api_call(manual_input)
+    address_api_call(manual_input, '')
     return()
 
 # Helper Functions
 
-def address_api_call(address):
-    print(' SCANNING MAC ADDRESS...')
+def address_api_call(address, ip_address):
+    print('\n SCANNING MAC ADDRESS...')
     url = ("https://macvendors.co/api/" + address)
     response=requests.get(url)
     result=response.json()
@@ -42,6 +42,8 @@ def transcribe_api_results(json_object):
     for key in json_object:
         value = json_object[key]
         print(f"\n {snake_case_to_normal(key)}: {value}")
+        if ip_address and len(ip_address) > 0:
+            print(f"\n IP ADDRESS: {ip_address}")
 
 def snake_case_to_normal(snake_text):
     temp = snake_text.split('_')
@@ -69,12 +71,11 @@ def transmit_packet(packet):
 def parse_response(success_list):
     targets = []
     for success in success_list:
-        entry = {'mac': success[1].hwsrc}
+        entry = {'ip': success[1].psrc,'mac': success[1].hwsrc}
         targets.append(entry)
     return targets
 
 def display_picker(element_entries):
     mac_list = [el['mac'] for el in element_entries]
     option, index = pick(mac_list, 'SELECT MAC Address', indicator='=>', default_index=0)
-    address_api_call(option)
-
+    address_api_call(option, element_entries[index]['ip'])
