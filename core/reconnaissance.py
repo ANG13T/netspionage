@@ -1,5 +1,6 @@
 import requests 
 import json
+import re
 
 def recon_choice(choice, target, manual_input):
     if choice == '1':
@@ -25,8 +26,6 @@ def address_api_call(address):
     result=response.json()
     if result["result"]:
         json_object=result['result']
-        print(json_object)
-        #json_object = json.loads(final)
         if "error" in json_object:
             print("No MAC Address Found!")
             return()
@@ -38,4 +37,9 @@ def address_api_call(address):
 def transcribe_api_results(json_object):
     for key in json_object:
         value = json_object[key]
-        print("The key and value are ({}) = ({})".format(key, value))
+        print(f"{snake_case_to_normal(key)} = {value}")
+
+def snake_case_to_normal(snake_text):
+    temp = snake_text.split('_')
+    res = temp[0].upper() + ''.join(' ' + ele.title().upper() for ele in temp[1:])
+    return res
