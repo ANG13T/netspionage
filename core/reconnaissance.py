@@ -25,17 +25,18 @@ def input_mac_address(manual_input):
 # Helper Functions
 
 def address_api_call(address):
+    print(' SCANNING MAC ADDRESS...')
     url = ("https://macvendors.co/api/" + address)
     response=requests.get(url)
     result=response.json()
     if result["result"]:
         json_object=result['result']
         if "error" in json_object:
-            print("No MAC Address Found!")
+            print("\n No MAC Address Found!")
             return()
         transcribe_api_results(json_object)
     else:
-        print("Error: Something Went Wrong")
+        print("\n ERROR: Something Went Wrong")
 
 def transcribe_api_results(json_object):
     for key in json_object:
@@ -75,4 +76,5 @@ def parse_response(success_list):
 def display_picker(element_entries):
     mac_list = [el['mac'] for el in element_entries]
     option, index = pick(mac_list, 'SELECT MAC Address', indicator='=>', default_index=0)
+    address_api_call(option)
 
