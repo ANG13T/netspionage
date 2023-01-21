@@ -47,7 +47,9 @@ def prompt_display():
             while 1:
                 print("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
                 resp = input(" RECON INPUT >> ")
-                target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                target = ""
+                if resp == "1":
+                    target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 manual_input = ""
                 if resp == "2":
                     manual_input = input(" MAC ADDRESS (Eg:08:00:69:02:01:FC) >> ")
