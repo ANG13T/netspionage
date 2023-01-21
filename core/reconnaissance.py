@@ -74,4 +74,4 @@ def parse_response(success_list):
 def print_analysis(element_entries):
     print("\n SELECT MAC Address")
     for element in element_entries:
-        print("\n " + element['mac'])
+        print(" " + element['mac'])

@@ -38,7 +38,7 @@ def prompt_display():
                 resp = input(" SCAN INPUT >> ")
                 target = ""
                 if resp == "1" or resp == "3":
-                    target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                    target = input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 break
             scanner_choice(resp, target)
             continue
@@ -49,7 +49,7 @@ def prompt_display():
                 resp = input(" RECON INPUT >> ")
                 target = ""
                 if resp == "1":
-                    target = input(" IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                    target = input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 manual_input = ""
                 if resp == "2":
                     manual_input = input(" MAC ADDRESS (Eg:08:00:69:02:01:FC) >> ")
