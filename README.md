@@ -11,3 +11,6 @@ via virtualenv
 
 upload to 
 pypi
+
+# Installaction
+`pip install -r requirements.txt`

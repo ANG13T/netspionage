@@ -2,6 +2,7 @@ import requests
 import json
 import re
 import scapy.all as scapy
+from pick import pick
 
 def recon_choice(choice, target, manual_input):
     if choice == '1':
@@ -52,7 +53,7 @@ def scan_addresses(target):
     broadcast_packets = create_packet(target)
     success_packets = transmit_packet(broadcast_packets)
     entries = parse_response(success_packets)
-    print_analysis(entries)
+    display_picker(entries)
 
 def create_packet(ip):
     arp_request = scapy.ARP(pdst=ip)  # create a ARP request object by scapy
@@ -71,7 +72,7 @@ def parse_response(success_list):
         targets.append(entry)
     return targets
 
-def print_analysis(element_entries):
-    print("\n SELECT MAC Address")
-    for element in element_entries:
-        print(" " + element['mac'])
+def display_picker(element_entries):
+    mac_list = [el['mac'] for el in element_entries]
+    option, index = pick(mac_list, 'SELECT MAC Address', indicator='=>', default_index=0)
+
