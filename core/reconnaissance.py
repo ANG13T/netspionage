@@ -34,16 +34,16 @@ def address_api_call(address, ip_address):
         if "error" in json_object:
             print("\n No MAC Address Found!")
             return()
-        transcribe_api_results(json_object)
+        transcribe_api_results(json_object, ip_address)
     else:
         print("\n ERROR: Something Went Wrong")
 
-def transcribe_api_results(json_object):
+def transcribe_api_results(json_object, ip_address):
     for key in json_object:
         value = json_object[key]
         print(f"\n {snake_case_to_normal(key)}: {value}")
-        if ip_address and len(ip_address) > 0:
-            print(f"\n IP ADDRESS: {ip_address}")
+    if ip_address and len(ip_address) > 0:
+        print(f"\n IP ADDRESS: {ip_address}")
 
 def snake_case_to_normal(snake_text):
     temp = snake_text.split('_')
