@@ -15,9 +15,12 @@ via virtualenv
 `pip install -r requirements.txt`
 
 TODO:
-- config file with vars: iface, global colors
 - add terminal colors
-- upload to pypi
-- make shortform command of netspionage
-- fix tcp flood attack
+- config file with vars: iface, global colors
+
 - test on VM with PAU06
+- fix tcp flood attack
+
+- make shortform command of netspionage
+- write documentation
+- upload to pypi
