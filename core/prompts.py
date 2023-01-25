@@ -1,4 +1,4 @@
-# from core.updater import update
+from core.updater import update
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
@@ -63,14 +63,12 @@ def prompt_display():
                 resp = input(" DETECT INPUT >> ")
                 print(resp)
                 break
-            # shodan_host(ip)
-            # censys_ip(ip)
             continue
 
         elif choice == 4:
             while 1:
                 break
-            # update()
+            update()
             continue
 
         elif choice == 5:
