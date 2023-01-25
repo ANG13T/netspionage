@@ -39,10 +39,8 @@ def wifi_scanner():
     config_dataframe()
     initiate_wifi_scan()
 
-
 def port_scanner(target):
     scan_ports(target)
-
 
 # Network Scanner
 

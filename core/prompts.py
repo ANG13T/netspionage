@@ -1,6 +1,7 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
+from core.style import print_style
 
 def menu_display():
     return ("""
@@ -12,11 +13,11 @@ def menu_display():
 
  3.  DETECTION                  Detect for ARP Spoofing and SYN Flood attacks
 
- 4.  EXIT                        Exit from netspionage to your terminal
+ 4.  EXIT                       Exit from netspionage to your terminal
        """)
 
 def prompt_display():  
-    print(menu_display())
+    print_style(menu_display())
     while 1:
         user_input = prompt("\n netspionage >> ")
         if len(user_input)==0:
