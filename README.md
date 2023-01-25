@@ -15,8 +15,8 @@ via virtualenv
 `pip install -r requirements.txt`
 
 TODO:
-- add terminal colors
 - config file with vars: iface, global colors
+- txt file to store output info
 
 - test on VM with PAU06
 - fix tcp flood attack
@@ -25,4 +25,3 @@ TODO:
 - write documentation
 - upload to pypi
 
-- txt file to store output info
