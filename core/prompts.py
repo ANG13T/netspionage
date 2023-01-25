@@ -1,18 +1,18 @@
-from core.updater import update
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
 
 def menu_display():
     return ("""
- ENTER 1 - 5 TO SELECT OPTIONS
+ ENTER 1 - 4 TO SELECT OPTIONS
 
  1.  SCANNING                   Scan for IPs, nearby APs, ports, hosts, and more
- 2.  RECONNAISSANCE             Gather  information  about nearby MAC addresses
- 3.  DETECTION                  Detect for ARP Spoofing and SYN Flood attacks
- 4.  UPDATE                     Update to the latest version of netspionage
 
- 5. EXIT                        Exit from netspionage to your terminal
+ 2.  RECONNAISSANCE             Gather  information  about nearby MAC addresses
+
+ 3.  DETECTION                  Detect for ARP Spoofing and SYN Flood attacks
+
+ 4.  EXIT                        Exit from netspionage to your terminal
        """)
 
 def prompt_display():  
@@ -66,12 +66,6 @@ def prompt_display():
             continue
 
         elif choice == 4:
-            while 1:
-                break
-            update()
-            continue
-
-        elif choice == 5:
             exit('\n Till next time!')
 
         else:
