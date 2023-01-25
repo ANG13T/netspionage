@@ -1,6 +1,20 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
+import configparser
+
+log_to_text_file = False
+interface = "wlan0"
+
+def read_config():
+    config = configparser.ConfigParser()
+    log_text = config['configuration.ini']['LogToTextFile']
+    if log_text == "True":
+        log_to_text_file = True
+    else:
+        log_to_text_file = False
+
+    interface = config['configuration.ini']['WiFiInterface']
 
 def print_banner():
        return ("""
@@ -34,6 +48,7 @@ def menu_display():
        """)
 
 def prompt_display():  
+    read_config()
     print(print_banner())
     print(print_details())
     print(menu_display())
