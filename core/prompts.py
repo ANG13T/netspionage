@@ -1,7 +1,6 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
-from core.style import print_style
 
 def print_banner():
        return ("""
@@ -35,27 +34,27 @@ def menu_display():
        """)
 
 def prompt_display():  
-    print_style(print_banner())
-    print_style(print_details())
-    print_style(menu_display())
+    print(print_banner())
+    print(print_details())
+    print(menu_display())
     while 1:
         user_input = prompt("\n netspionage >> ")
         if len(user_input)==0:
-            print_style("\n")
+            print("\n")
             continue
         if user_input == "help" or user_input == "options" or user_input == "commands":
-            print_style(menu_display())
+            print(menu_display())
             continue
 
         try:
             choice = int(user_input)
         except ValueError:
-            print_style("\n Invalid Command! Type `help` to see all options")
+            print("\n Invalid Command! Type `help` to see all options")
             continue
 
         if choice == 1:
             while 1:
-                print_style("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
+                print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
                 resp = input(" SCAN INPUT >> ")
                 target = ""
                 if resp == "1" or resp == "3":
@@ -66,7 +65,7 @@ def prompt_display():
 
         if choice == 2:
             while 1:
-                print_style("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
+                print("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
                 resp = input(" RECON INPUT >> ")
                 target = ""
                 if resp == "1":
@@ -80,9 +79,9 @@ def prompt_display():
 
         if choice == 3:
             while 1:
-                print_style("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
+                print("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
                 resp = input(" DETECT INPUT >> ")
-                print_style(resp)
+                print(resp)
                 break
             continue
 
