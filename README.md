@@ -24,3 +24,5 @@ TODO:
 - make shortform command of netspionage
 - write documentation
 - upload to pypi
+
+- txt file to store output info

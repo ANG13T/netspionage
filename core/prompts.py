@@ -3,6 +3,24 @@ from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
 from core.style import print_style
 
+def print_banner():
+       return ("""
+                __             _                            
+    ____  ___  / /__________  (_)___  ____  ____ _____ ____ 
+   / __ \/ _ \/ __/ ___/ __ \/ / __ \/ __ \/ __ `/ __ `/ _ \\
+  / / / /  __/ /_(__  ) /_/ / / /_/ / / / / /_/ / /_/ /  __/
+ /_/ /_/\___/\__/____/ .___/_/\____/_/ /_/\__,_/\__, /\___/ 
+                    /_/                        /____/           
+""")
+
+def print_details():
+    return("""
+ Created by Angelina Tsuboi [angelinatsuboi.net] V.0.0.1
+
+ https://github.com/angelina-tsuboi/netspionage
+ ----------------------------------------------------------------------------
+       """)
+
 def menu_display():
     return ("""
  ENTER 1 - 4 TO SELECT OPTIONS
@@ -17,25 +35,27 @@ def menu_display():
        """)
 
 def prompt_display():  
+    print_style(print_banner())
+    print_style(print_details())
     print_style(menu_display())
     while 1:
         user_input = prompt("\n netspionage >> ")
         if len(user_input)==0:
-            print("\n")
+            print_style("\n")
             continue
         if user_input == "help" or user_input == "options" or user_input == "commands":
-            print(menu_display())
+            print_style(menu_display())
             continue
 
         try:
             choice = int(user_input)
         except ValueError:
-            print("\n Invalid Command! Type `help` to see all options")
+            print_style("\n Invalid Command! Type `help` to see all options")
             continue
 
         if choice == 1:
             while 1:
-                print("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
+                print_style("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
                 resp = input(" SCAN INPUT >> ")
                 target = ""
                 if resp == "1" or resp == "3":
@@ -46,7 +66,7 @@ def prompt_display():
 
         if choice == 2:
             while 1:
-                print("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
+                print_style("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
                 resp = input(" RECON INPUT >> ")
                 target = ""
                 if resp == "1":
@@ -60,9 +80,9 @@ def prompt_display():
 
         if choice == 3:
             while 1:
-                print("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
+                print_style("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
                 resp = input(" DETECT INPUT >> ")
-                print(resp)
+                print_style(resp)
                 break
             continue
 
