@@ -26,7 +26,7 @@ git clone https://github.com/angelina-tsuboi/netspionage.git
 cd netspionage
 
 # install the requirements
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Usage
