@@ -3,6 +3,7 @@ from scapy.layers.inet import IP, ICMP
 from threading import Thread
 import pandas
 import socket
+from core.print_output import print_output
 import os
 import time
 
@@ -71,7 +72,7 @@ def get_os(ip_addr):
         return "could not figure the OS version"
 
 def parse_response(success_list):
-    print(success_list)
+    print_output(success_list)
     targets = []
     for success in success_list:
         entry = {'ip': success[1].psrc, 'mac': success[1].hwsrc}
@@ -79,13 +80,13 @@ def parse_response(success_list):
     return targets
 
 def print_analysis(element_entries):
-    print("end")
-    print("IP\t\t\tMAC Address\t\t\tOPERATING SYSTEM")
-    print("." * 100)
+    print_output("end")
+    print_output("IP\t\t\tMAC Address\t\t\tOPERATING SYSTEM")
+    print_output("." * 100)
     for element in element_entries:
-        print(element["ip"] + "\t\t" + element['mac'] + "\t\t" + get_os(element["ip"]) + "\n")
-    print("." * 100)
-    print("\n Scan Complete!")
+        print_output(element["ip"] + "\t\t" + element['mac'] + "\t\t" + get_os(element["ip"]) + "\n")
+    print_output("." * 100)
+    print_output("\n Scan Complete!")
 
 # WiFi Scanner
 
@@ -127,7 +128,7 @@ def extract_network_info(packet):
 def print_all_networks():
     while True:
         os.system("clear")
-        print(networks)
+        print_output(networks)
         time.sleep(0.5)
 
 
@@ -148,11 +149,11 @@ def scan_ports(host):
     for port in range(scan_start, scan_end):
         if check_port(host, port):
             open_count += 1
-            print(f"\n [+] {host}:{port} is OPEN!")
+            print_output(f"\n [+] {host}:{port} is OPEN!")
         else:
             close_count += 1
-            print(f"\n [!] {host}:{port} is CLOSED!")
-    print(f"\n {open_count} OPEN Ports \n {close_count} CLOSED Ports")
+            print_output(f"\n [!] {host}:{port} is CLOSED!")
+    print_output(f"\n {open_count} OPEN Ports \n {close_count} CLOSED Ports")
 
 def check_port(host, port):
     s = socket.socket()

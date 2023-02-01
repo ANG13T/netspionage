@@ -48,17 +48,17 @@ def parseResponse(success_list):
 
 
 def print_analysis(element_entries):
-    print("end")
-    print("IP\t\t\tMAC Address\t\t\tOPERATING SYSTEM")
-    print("." * 100)
+    print_output("end")
+    print_output("IP\t\t\tMAC Address\t\t\tOPERATING SYSTEM")
+    print_output("." * 100)
     for element in entries:
-        print(element["ip"] + "\t\t" + element['mac'] + "\t\t" + getOS(element["ip"]) + "\n")
+        print_output(element["ip"] + "\t\t" + element['mac'] + "\t\t" + getOS(element["ip"]) + "\n")
 
 
 options = getArguments()
 
 if options.target is not None:
-    print("str")
+    print_output("str")
     broadcast_packets = createPacket(options.target)
     success_packets = transmitPacket(broadcast_packets)
     entries = parseResponse(success_packets)
