@@ -5,12 +5,14 @@ import configparser
 
 log_to_text_file = False
 interface = "wlan0"
+output_file = None
 
 def read_config():
     config = configparser.ConfigParser()
     log_text = config['configuration.ini']['LogToTextFile']
     if log_text == "True":
         log_to_text_file = True
+        output_file = open('output.txt', 'w')
     else:
         log_to_text_file = False
 
