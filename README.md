@@ -34,7 +34,33 @@ pip install -r requirements.txt
 ReconSpider is very handy tool and easy to use. All you have to do is just have to pass values to parameter.
 In order to start ReconSpider just type:
 ```
-python3 reconspider.py
+python3 netspionage.py
+```
+
+### Banner
+```
+                __             _                            
+    ____  ___  / /__________  (_)___  ____  ____ _____ ____ 
+   / __ \/ _ \/ __/ ___/ __ \/ / __ \/ __ \/ __ `/ __ `/ _ \
+  / / / /  __/ /_(__  ) /_/ / / /_/ / / / / /_/ / /_/ /  __/
+ /_/ /_/\___/\__/____/ .___/_/\____/_/ /_/\__,_/\__, /\___/ 
+                    /_/                        /____/  
+                    
+ Created by Angelina Tsuboi [angelinatsuboi.net] V.0.0.1
+
+ https://github.com/angelina-tsuboi/netspionage
+ ----------------------------------------------------------------------------
+ 
+ ENTER 1 - 4 TO SELECT OPTIONS
+
+ 1.  SCANNING                   Scan for IPs, nearby APs, ports, hosts, and more
+
+ 2.  RECONNAISSANCE             Gather  information  about nearby MAC addresses
+
+ 3.  DETECTION                  Detect for ARP Spoofing and SYN Flood attacks
+
+ 4.  EXIT                       Exit from netspionage to your terminal
+ 
 ```
 
 **1. IP**
