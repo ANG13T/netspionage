@@ -1,7 +1,7 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
-from core.print_output import print_output, print_prompt
+from core.print_output import print_output, print_input
 import configparser
 
 interface = "wlan0"
@@ -48,7 +48,7 @@ def prompt_display():
     print_output(print_details())
     print_output(menu_display())
     while 1:
-        user_input = input("\n netspionage >> ")
+        user_input = print_input("\n netspionage >> ")
         if len(user_input)==0:
             print_output("\n")
             continue
@@ -65,10 +65,10 @@ def prompt_display():
         if choice == 1:
             while 1:
                 print_output("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
-                resp = input(" SCAN INPUT >> ")
+                resp = print_input(" SCAN INPUT >> ")
                 target = ""
                 if resp == "1" or resp == "3":
-                    target = input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                    target = print_input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 break
             scanner_choice(resp, target)
             continue
@@ -76,13 +76,13 @@ def prompt_display():
         if choice == 2:
             while 1:
                 print_output("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
-                resp = input(" RECON INPUT >> ")
+                resp = print_input(" RECON INPUT >> ")
                 target = ""
                 if resp == "1":
-                    target = input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                    target = print_input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 manual_input = ""
                 if resp == "2":
-                    manual_input = input(" MAC ADDRESS (Eg:08:00:69:02:01:FC) >> ")
+                    manual_input = print_input(" MAC ADDRESS (Eg:08:00:69:02:01:FC) >> ")
                 break
             recon_choice(resp, target, manual_input)
             continue
@@ -90,7 +90,7 @@ def prompt_display():
         if choice == 3:
             while 1:
                 print_output("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
-                resp = input(" DETECT INPUT >> ")
+                resp = print_input(" DETECT INPUT >> ")
                 print_output(resp)
                 break
             continue
