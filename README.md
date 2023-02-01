@@ -15,9 +15,6 @@ via virtualenv
 `pip install -r requirements.txt`
 
 TODO:
-- config file with vars: iface, global colors
-- txt file to store output info
-
 - test on VM with PAU06
 - fix tcp flood attack
 
