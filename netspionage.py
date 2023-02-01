@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
            try:
                   if log_text == "True":
-                     with open("output.txt", 'w') as sys.stdout:
+                     with open("output.txt", 'a') as sys.stdout:
                             from core import prompts
                   else:
                      from core import prompts
