@@ -7,7 +7,8 @@ interface = "wlan0"
 
 def read_config():
     config = configparser.ConfigParser()
-    interface = config['configuration.ini']['WiFiInterface']
+    config.read('configuration.ini')
+    interface = config.get('Settings', 'WiFiInterface')
 
 def print_banner():
        return ("""
