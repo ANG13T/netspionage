@@ -19,7 +19,7 @@ def print_input(text):
 def get_print_color():
     config = configparser.ConfigParser()
     config.read('configuration.ini')
-    color = config.get('Settings', 'Color')[1:-1].lower()
+    color = config.get('Settings', 'Color').lower()
     set_color = "green"
     if color in colors:
         set_color = color
