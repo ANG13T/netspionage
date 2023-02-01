@@ -7,8 +7,28 @@
   </span>
   <br>
 </p>
-# Installation
-`pip install -r requirements.txt`
+
+<p align="center">
+  <a href="#installation">Installation</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#usage">Usage</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Features</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#contributing">Contributing</a>
+</p>
+
+## Installation
+```console
+# clone the repo
+$ git clone https://github.com/angelina-tsuboi/netspionage.git
+
+# change the working directory to netspionage
+$ cd netspionage
+
+# install the requirements
+$ pip install -r requirements.txt
+```
 
 TODO:
 - test on VM with PAU06
