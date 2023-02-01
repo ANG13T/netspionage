@@ -1,7 +1,7 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
-from core.print_output import print_output
+from core.print_output import print_output, print_prompt
 import configparser
 
 interface = "wlan0"
@@ -48,7 +48,7 @@ def prompt_display():
     print_output(print_details())
     print_output(menu_display())
     while 1:
-        user_input = prompt("\n netspionage >> ")
+        user_input = input("\n netspionage >> ")
         if len(user_input)==0:
             print_output("\n")
             continue
