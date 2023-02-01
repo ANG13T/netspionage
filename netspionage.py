@@ -5,11 +5,11 @@ if __name__ == '__main__':
            try:
               from core import prompts
            except ModuleNotFoundError:
-                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version. Please install using: python3 setup.py install')
+                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version.')
                   quit()
     else:
            try:
                 from core import prompts
            except ImportError:
-                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version. Please install using: python3 setup.py install')
+                  print('\nSeems like you haven\'t installed Requirements or You are not using python3 version.')
                   quit()
