@@ -63,7 +63,7 @@ python3 netspionage.py
  
 ```
 
-**1. NETWORK SCANNER**
+**NETWORK SCANNER**
 
 Gather information abuot devices connected to network such as IP address, MAC address, and OS.
 ```
@@ -72,7 +72,7 @@ SCAN INPUT >> 1
 NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**2. WiFi SCANNER**
+**WiFi SCANNER**
 
 Gather information about nearby WiFi access points such as dBm Signal, SSID, channel, and encryption.
 ```
@@ -80,7 +80,7 @@ netspionage >> 1
 SCAN INPUT >> 2
 ```
 
-**3. PORT SCANNER**
+**PORT SCANNER**
 
 Scan ports on a specified network to check if they are open or closed.
 ```
@@ -89,110 +89,48 @@ SCAN INPUT >> 3
 NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**4. DNS MAP**
+**MAC ADDRESS RECON (CHOOSE)**
 
-This option allows you to map an organizations attack surface with a virtual DNS Map of the DNS records associated with the target organization.
+This option allows you to gather data about a selected device on the network via MAC address.
 ```
-ReconSpider >> 4
-DNS MAP (URL) >> vulnweb.com
-```
-
-**5. METADATA**
-
-This option allows you to extract all metadat of the file.
-```
-Reconspider >> 5
-Metadata (PATH) >> /root/Downloads/images.jpeg
+netspionage >> 2
+RECON INPUT >> 1
+NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**6. REVERSE IMAGE SEARCH**
+**MAC ADDRESS RECON (INPUT)**
 
-This option allows you to obtain information and similar image that are available in internet.
+This option allows you to gather data about a device via an inputted MAC address.
 ```
-Reconspider >> 6
-REVERSE IMAGE SEARCH (PATH) >> /root/Downloads/images.jpeg
-Open Search Result in web broser? (Y/N) : y
-```
-
-**7. HONEYPOT**
-
-This option allows you to identify honeypots! The probability that an IP is a honeypot is captured in a "Honeyscore" value that can range from 0.0 to 1.0
-```
-ReconSpider >> 7
-HONEYPOT (IP) >> 1.1.1.1
+netspionage >> 2
+RECON INPUT >> 2
+MAC ADDRESS (Eg:08:00:69:02:01:FC) >> 08:00:69:02:01:FC
 ```
 
-**8. MAC ADDRESS LOOKUP**
+**DETECT ARP SPOOFING**
 
-This option allows you to identify Mac address details who is manufacturer, address, country, etc.
-
+Detect for ARP Spoofing Attacks on your network.
 ```
-Reconspider >> 8
-MAC ADDRESS LOOKUP (Eg:08:00:69:02:01:FC) >>
-```
-
-**9. IPHEATMAP**
-
-This option provided you heatmap of the provided ip or single ip, if connect all the provided ip location with accurate Coordinator.
-```
-Reconspider >> 9
-
-    1) Trace single IP
-    2) Trace multiple IPs
-OPTIONS >>
+netspionage >> 3
+DETECT INPUT >> 1
+NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**10. TORRENT**
+**DETECT TCP FLODDING**
 
-This option allows you to gathers history of Torrent download history.
+Detect for TCP Flood Attacks on your network.
 ```
-Reconspider >> 10
-IPADDRESS (Eg:192.168.1.1) >>
-```
-
-**11. USERNAME**
-
-This option allows you to gathers account information of the provided username from social media like Instagram, Twitter, Facebook.
-```
-Reconspider >> 11
-
-1.Facebook
-2.Twitter
-3.Instagram
-
-Username >>
+netspionage >> 3
+DETECT INPUT >> 2
+NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**12. IP2PROXY**
+**EXIT**
 
-This option allows you to identify whether IP address uses any kind of VPN / Proxy to hide his identify.
+Exit netspionage from current terminal.
 ```
-Reconspider >> 12
-IPADDRESS (Eg:192.168.1.1) >>
-```
-
-**13. MAIL BREACH**
-
-This option allows you to identify all breached mail ID from given domain.
-```
-Reconspider >> 13
-DOMAIN (Eg:intercom.io) >>
-```
-
-**99. UPDATE**
-
-This option allows you to check for updates. If a newer version will available, ReconSpider will download and merge the updates into the current directory without overwriting other files.
-```
-ReconSpider >> 99
-Checking for updates..
-```
-
-**0. EXIT**
-
-This option allows you to exit from ReconSpider Framework to your current Operating System's terminal.
-```
-ReconSpider >> 0
-Bye, See ya again..
+netspionage >> 4
+Till next time!
 ```
 
 ## Contributing
@@ -207,9 +145,6 @@ to understand the issues.
 
 TODO:
 - test on VM with PAU06
-- fix tcp flood attack
-
-- make shortform command of netspionage
-- write documentation
+- fix tcp flood attack and arp spoof detection
 - upload to pypi
 
