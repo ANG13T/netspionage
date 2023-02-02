@@ -31,6 +31,15 @@ cd netspionage
 pip3 install -r requirements.txt
 ```
 
+## Update Config
+Adjust configuration settings such as WiFi Interface, Color, and Text File Logging
+```
+[Settings]
+LogToTextFile=False
+WiFiInterface=wlan0
+Color=green
+```
+
 ## Usage
 In order to get started with netspionage just type:
 ```
