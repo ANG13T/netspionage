@@ -63,29 +63,30 @@ python3 netspionage.py
  
 ```
 
-**1. IP**
+**1. NETWORK SCANNER**
 
-This option gathers all the information of given IP Address from public resources.
+Gather information abuot devices connected to network such as IP address, MAC address, and OS.
 ```
-ReconSpider >> 1
-IP >> 8.8.8.8
-```
-
-**2. DOMAIN**
-
-This option gathers all the information of given URL Address and check for vulneribility.
-```
-Reconspider >> 2
-HOST (URL / IP) >> vulnweb.com
-PORT >> 443
+netspionage >> 1
+SCAN INPUT >> 1
+NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**3. PHONENUMBER**
+**2. WiFi SCANNER**
 
-This option allows you to gather information of given phonenumber.
+Gather information about nearby WiFi access points such as dBm Signal, SSID, channel, and encryption.
 ```
-Reconspider >> 3
-PHONE NUMBER (919485247632) >>
+netspionage >> 1
+SCAN INPUT >> 2
+```
+
+**3. PORT SCANNER**
+
+Scan ports on a specified network to check if they are open or closed.
+```
+netspionage >> 1
+SCAN INPUT >> 3
+NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
 **4. DNS MAP**
