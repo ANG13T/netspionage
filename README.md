@@ -14,6 +14,8 @@
   <a href="#usage">Usage</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#upcoming">Upcoming</a>
 </p>
 
 ## Installation
