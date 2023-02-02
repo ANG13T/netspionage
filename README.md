@@ -116,7 +116,7 @@ DETECT INPUT >> 1
 NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
-**DETECT TCP FLODDING**
+**DETECT TCP FLOODING**
 
 Detect for TCP Flood Attacks on your network.
 ```
