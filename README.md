@@ -153,6 +153,7 @@ Till next time!
 We would love to have you help us with the development of netspionage. Read below on how to get started!
 - Fork this Repository
 - Contribute a change that either [resolve an issue](https://github.com/angelina-tsuboi/netspionage/issues) or [adds a new feature](#upcoming)
+- Submit a PR for Review
 
 ## Upcoming
 Here is a list of features we would like to integrate to netspionage in the upcoming versions:
