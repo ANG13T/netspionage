@@ -125,6 +125,13 @@ DETECT INPUT >> 2
 NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
 ```
 
+**HELP**
+
+View all command options for netspionage.
+```
+netspionage >> help
+```
+
 **EXIT**
 
 Exit netspionage from current terminal.
@@ -143,5 +150,7 @@ Here is a list of features we would like to integrate to netspionage in the upco
 - test on VM with PAU06
 - fix tcp flood attack and arp spoof detection
 - upload to pypi
+- fix wlan0 to integrate config file
+- config file view/edit through cli
 - Detect for more OS in scanner
 
