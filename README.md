@@ -30,9 +30,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Usage
-
-ReconSpider is very handy tool and easy to use. All you have to do is just have to pass values to parameter.
-In order to start ReconSpider just type:
+In order to get started with netspionage just type:
 ```
 python3 netspionage.py
 ```
@@ -134,16 +132,12 @@ Till next time!
 ```
 
 ## Contributing
-We would love to have you help us with the development of Sherlock. Each and every contribution is greatly valued!
+We would love to have you help us with the development of netspionage. Read below on how to get started!
+- Fork this Repository
+- Contribute a change that either [resolve an issue](https://github.com/angelina-tsuboi/netspionage/issues) or [adds a new feature](#upcoming)
 
-Here are some things we would appreciate your help on:
-- Addition of new site support ¹
-- Bringing back site support of [sites that have been removed](removed_sites.md) in the past due to false positives
-
-[1] Please look at the Wiki entry on [adding new sites](https://github.com/sherlock-project/sherlock/wiki/Adding-Sites-To-Sherlock)
-to understand the issues.
-
-TODO:
+## Upcoming
+Here is a list of features we would like to integrate to netspionage in the upcoming versions:
 - test on VM with PAU06
 - fix tcp flood attack and arp spoof detection
 - upload to pypi
