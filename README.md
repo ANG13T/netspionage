@@ -143,4 +143,5 @@ Here is a list of features we would like to integrate to netspionage in the upco
 - test on VM with PAU06
 - fix tcp flood attack and arp spoof detection
 - upload to pypi
+- Detect for more OS in scanner
 
