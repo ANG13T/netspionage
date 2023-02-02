@@ -31,7 +31,7 @@ cd netspionage
 pip3 install -r requirements.txt
 ```
 
-## Update Config
+## Update Config [configuration.ini]
 Adjust configuration settings such as WiFi Interface, Color, and Text File Logging
 ```
 [Settings]
