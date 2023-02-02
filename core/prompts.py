@@ -64,7 +64,7 @@ def prompt_display():
 
         if choice == 1:
             while 1:
-                print_output("\n 1. Network Scanner \n 2. WiFi Scanner \n 3. Port Scanner \n")
+                print_output("\n 1. Network Scanner \n\n 2. WiFi Scanner \n\n 3. Port Scanner \n")
                 resp = print_input(" SCAN INPUT >> ")
                 target = ""
                 if resp == "1" or resp == "3":
@@ -75,7 +75,7 @@ def prompt_display():
 
         if choice == 2:
             while 1:
-                print_output("\n 1. Choose MAC Address \n 2. Input MAC Address\n")
+                print_output("\n 1. Choose MAC Address \n\n 2. Input MAC Address\n")
                 resp = print_input(" RECON INPUT >> ")
                 target = ""
                 if resp == "1":
@@ -89,7 +89,7 @@ def prompt_display():
 
         if choice == 3:
             while 1:
-                print_output("\n 1. ARP Spoof Attack \n 2. SYN Attack\n")
+                print_output("\n 1. ARP Spoof Attack \n\n 2. SYN Attack\n")
                 resp = print_input(" DETECT INPUT >> ")
                 print_output(resp)
                 break
