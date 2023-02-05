@@ -157,7 +157,6 @@ We would love to have you help us with the development of netspionage. Read belo
 
 ## Upcoming
 Here is a list of features we would like to integrate to netspionage in the upcoming versions:
-- test on VM with PAU06
 - fix tcp flood attack and arp spoof detection
 - upload to pypi
 - fix wlan0 to integrate config file
