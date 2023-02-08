@@ -108,17 +108,17 @@ def config_dataframe():
     networks.set_index("BSSID", inplace=True)
 
 def extract_network_info(packet):
-    if packet.haslayer(Dot11Beacon):
+    if packet.haslayer(scapy.Dot11Beacon):
         # extract the MAC address of the network
-        bssid = packet[Dot11].addr2
+        bssid = packet[scapy.Dot11].addr2
         # get the name of it
-        ssid = packet[Dot11Elt].info.decode()
+        ssid = packet[scapy.Dot11Elt].info.decode()
         try:
             dbm_signal = packet.dBm_AntSignal
         except:
             dbm_signal = "N/A"
         # extract network stats
-        stats = packet[Dot11Beacon].network_stats()
+        stats = packet[scapy.Dot11Beacon].network_stats()
         # get the channel of the AP
         channel = stats.get("channel")
         # get the crypto
