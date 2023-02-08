@@ -44,6 +44,8 @@ Color=green
 In order to get started with netspionage just type:
 ```
 python3 netspionage.py
+
+sudo -E python3 netspionage.py
 ```
 
 ### Banner
