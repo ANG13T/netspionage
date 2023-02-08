@@ -22,7 +22,7 @@ def scanner_choice(choice, target):
 
 # Wifi Scanner Configs
 # Change to the appropriate interface
-interface = "wlan0mon"
+interface = "wlan0"
 wifi_scan_timeout = 10
 
 # Port Scanner Configs
@@ -92,6 +92,7 @@ def print_analysis(element_entries):
 
 def initiate_wifi_scan():
     # start the thread that prints all the networks
+    print("hi")
     printer = Thread(target=print_all_networks)
     printer.daemon = True
     printer.start()
