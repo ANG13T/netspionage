@@ -22,7 +22,7 @@ def scanner_choice(choice, target):
 
 # Wifi Scanner Configs
 # Change to the appropriate interface
-interface = "lan"
+interface = "wlan0"
 wifi_scan_timeout = 10
 
 # Port Scanner Configs
