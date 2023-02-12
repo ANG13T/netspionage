@@ -1,5 +1,5 @@
 <p align=center>
-<img src="https://github.com/angelina-tsuboi/netspionage/blob/master/assets/banner.png" />
+<img src="https://github.com/ANG13T/netspionage/blob/master/assets/banner.png" />
   <br />
   <br />
   <span>
@@ -22,7 +22,7 @@
 
 ```console
 # clone the repo
-git clone https://github.com/angelina-tsuboi/netspionage.git
+git clone https://github.com/ANG13T/netspionage.git
 
 # change the working directory to netspionage
 cd netspionage
@@ -52,14 +52,14 @@ sudo -E python3 netspionage.py
 
 ## Further Configuration
 ```
-Ensure your Network Adapter is on Monitor Mode 
+# Ensure your Network Adapter is on Monitor Mode 
 sudo airmon-ng start wlan0
 
 ip a
 
-Find name of Network Adapter (ie. wlan0mon)
+# Find name of Network Adapter (ie. wlan0mon)
 
-Set Interface to Name
+# Set Interface to Name
 
 vim configuration.ini
 
@@ -152,6 +152,7 @@ Detect for TCP Flood Attacks on your network.
 netspionage >> 3
 DETECT INPUT >> 2
 NET IP ADDRESS (Eg: 192.168.1.1/24) >> 192.168.1.1/24
+TCP NUMBER (Eg: 80) >> 80
 ```
 
 **HELP**
