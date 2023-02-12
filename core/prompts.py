@@ -41,7 +41,6 @@ def menu_display():
        """)
 
 def prompt_display():  
-    print(interface)
     print_output(print_banner())
     print_output(print_details())
     print_output(menu_display())
