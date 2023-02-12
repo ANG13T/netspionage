@@ -77,7 +77,7 @@ WiFiInterface=wlan0mon
                     
  Created by Angelina Tsuboi [angelinatsuboi.net] V.0.0.1
 
- https://github.com/angelina-tsuboi/netspionage
+ https://github.com/ANG13T/netspionage
  ----------------------------------------------------------------------------
  
  ENTER 1 - 4 TO SELECT OPTIONS
@@ -173,7 +173,7 @@ Till next time!
 ## Contributing
 We would love to have you help us with the development of netspionage. Read below on how to get started!
 - Fork this Repository
-- Contribute a change that either [resolve an issue](https://github.com/angelina-tsuboi/netspionage/issues) or [adds a new feature](#upcoming)
+- Contribute a change that either [resolve an issue](https://github.com/ANG13T/netspionage/issues) or [adds a new feature](#upcoming)
 - Submit a PR for Review
 
 ## Upcoming
