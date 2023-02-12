@@ -1,6 +1,7 @@
 from prompt_toolkit import prompt
 from core.scanner import scanner_choice
 from core.reconnaissance import recon_choice
+from core.detection import detect_choice
 from core.print_output import print_output, print_input
 import configparser
 
@@ -25,7 +26,7 @@ def print_details():
     return("""
  Created by Angelina Tsuboi [angelinatsuboi.net] V.0.0.1
 
- https://github.com/angelina-tsuboi/netspionage
+ https://github.com/ANG13T/netspionage
  ----------------------------------------------------------------------------
        """)
 
@@ -91,8 +92,12 @@ def prompt_display():
             while 1:
                 print_output("\n 1. ARP Spoof Attack \n\n 2. SYN Attack\n")
                 resp = print_input(" DETECT INPUT >> ")
-                print_output(resp)
+                target = print_input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
+                tcp = ""
+                if resp == "2":
+                    tcp = print_input(" TCP NUMBER (Eg: 80) >> ")
                 break
+            detect_choice(resp, target, tcp)
             continue
 
         elif choice == 4:

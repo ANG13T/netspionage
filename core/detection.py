@@ -1,23 +1,31 @@
 from scapy.all import Ether, ARP, srp, sniff, conf
 from core.print_output import print_output
 
-def detect_choice(choice, target):
+def detect_choice(choice, target, tcp):
     if choice == '1':
-        arp_detection()
+        arp_detection(target)
         return()
     elif choice == '2':
-        tcp_flood_detection(target)
+        tcp_flood_detection(target, tcp)
         return()
     else:
         exit()
 
 # Interface
-iface="wlan0
+iface="wlan0"
+IP = ""
+TCP = "80"
 
-def arp_detection():
+def arp_detection(target):
+    IP = target
+    print_output(" [RUNNING] ARP Spoofing Detector")
+    print_output(" CTRL+C to EXIT")
     sniff(store=False, prn=process_arp, iface=iface)
 
-def tcp_flood_detection(target):
+def tcp_flood_detection(target, tcp):
+    TCP = tcp
+    print_output(" [RUNNING] TCP Flood Detector")
+    print_output(" CTRL+C to EXIT")
     sniff(prn=flow_labels, store=0)
 
 # Helper Functions
@@ -40,14 +48,14 @@ def process_arp(packet):
                 response_mac = packet[ARP].hwsrc
                 # if they're different, definitely there is an attack
                 if real_mac != response_mac:
-                    print_output(f"[!] You are under attack, REAL-MAC: {real_mac.upper()}, FAKE-MAC: {response_mac.upper()}")
+                    print_output(f"[!] You are under ATTACK, REAL-MAC: {real_mac.upper()}, FAKE-MAC: {response_mac.upper()}")
             except IndexError:
                 # unable to find the real mac
                 # may be a fake IP or firewall is blocking packets
                 pass
 
 # TCP Flood Attack Detection 
-# TODO
+
 def flow_labels(pkt):
     if IP in pkt:
         ipsrc = str(pkt[IP].src)                     # source IP
@@ -61,12 +69,12 @@ def flow_labels(pkt):
         prtcl = pkt.getlayer(2).name                 # protocol
 
         flow = '{:<4} | {:<16} | {:<6} | {:<16} | {:<6} | '.format(prtcl, ipsrc, sport, ipdst, dport)
-        # print_output(flow)
+        print_output(flow)
 
     # TCP SYN packet
     if TCP in pkt and pkt[TCP].flags & 2:
         src = pkt.sprintf('{IP:%IP.src%}{IPv6:%IPv6.src%}')
         syn_count[src] += 1
         if syn_count.most_common(1)[0][1] > 25 and pkt.ack == 0:
-            print_output("Under Attack")
+            print_output("[!] You are under ATTACK")
             attack_flag = True
