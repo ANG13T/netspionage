@@ -7,7 +7,14 @@ from core.print_output import print_output
 import os
 import time
 
-def scanner_choice(choice, target):
+# Wifi Scanner Configs
+interface = "wlan0"
+wifi_scan_timeout = 10
+networks = pandas.DataFrame(columns=["BSSID", "SSID", "RSSI", "Channel", "Encryption"])
+networks.set_index("BSSID", inplace=True)
+
+def scanner_choice(choice, target, intf):
+    interface = intf
     if choice == '1':
         network_scanner(target)
         return()
@@ -19,13 +26,6 @@ def scanner_choice(choice, target):
         return()
     else:
         exit()
-
-# Wifi Scanner Configs
-# Change to the appropriate interface
-interface = "wlan0"
-wifi_scan_timeout = 10
-networks = pandas.DataFrame(columns=["BSSID", "SSID", "RSSI", "Channel", "Encryption"])
-networks.set_index("BSSID", inplace=True)
 
 # Port Scanner Configs
 scan_start = 1

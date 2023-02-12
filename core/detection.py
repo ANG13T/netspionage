@@ -1,7 +1,12 @@
 from scapy.all import Ether, ARP, srp, sniff, conf
 from core.print_output import print_output
 
-def detect_choice(choice, target, tcp):
+interface="wlan0"
+IP = "192.168.1.1/24"
+TCP = "80"
+
+def detect_choice(choice, target, tcp, intf):
+    interface = intf
     if choice == '1':
         arp_detection(target)
         return()
@@ -11,16 +16,12 @@ def detect_choice(choice, target, tcp):
     else:
         exit()
 
-# Interface
-iface="wlan0"
-IP = ""
-TCP = "80"
 
 def arp_detection(target):
     IP = target
     print_output("\n [RUNNING] ARP Spoofing Detector")
     print_output(" CTRL+C to EXIT")
-    sniff(store=False, prn=process_arp, iface=iface)
+    sniff(store=False, prn=process_arp, iface=interface)
 
 def tcp_flood_detection(target, tcp):
     TCP = tcp
@@ -48,7 +49,7 @@ def process_arp(packet):
                 response_mac = packet[ARP].hwsrc
                 # if they're different, definitely there is an attack
                 if real_mac != response_mac:
-                    print_output(f"[!] You are under ATTACK, REAL-MAC: {real_mac.upper()}, FAKE-MAC: {response_mac.upper()}")
+                    print(f"[!] You are under ATTACK, REAL-MAC: {real_mac.upper()}, FAKE-MAC: {response_mac.upper()}")
             except IndexError:
                 # unable to find the real mac
                 # may be a fake IP or firewall is blocking packets
@@ -69,7 +70,7 @@ def flow_labels(pkt):
         prtcl = pkt.getlayer(2).name                 # protocol
 
         flow = '{:<4} | {:<16} | {:<6} | {:<16} | {:<6} | '.format(prtcl, ipsrc, sport, ipdst, dport)
-        print_output(flow)
+        print(flow)
 
     # TCP SYN packet
     if TCP in pkt and pkt[TCP].flags & 2:

@@ -5,12 +5,9 @@ from core.detection import detect_choice
 from core.print_output import print_output, print_input
 import configparser
 
-interface = "wlan0"
-
-def read_config():
-    config = configparser.ConfigParser()
-    config.read('configuration.ini')
-    interface = config.get('Settings', 'WiFiInterface')
+config = configparser.ConfigParser()
+config.read('configuration.ini')
+interface = config.get('Settings', 'WiFiInterface')    
 
 def print_banner():
        return ("""
@@ -44,7 +41,7 @@ def menu_display():
        """)
 
 def prompt_display():  
-    read_config()
+    print(interface)
     print_output(print_banner())
     print_output(print_details())
     print_output(menu_display())
@@ -71,7 +68,7 @@ def prompt_display():
                 if resp == "1" or resp == "3":
                     target = print_input(" NET IP ADDRESS (Eg: 192.168.1.1/24) >> ")
                 break
-            scanner_choice(resp, target)
+            scanner_choice(resp, target, interface)
             continue
 
         if choice == 2:
@@ -97,7 +94,7 @@ def prompt_display():
                 if resp == "2":
                     tcp = print_input(" TCP NUMBER (Eg: 80) >> ")
                 break
-            detect_choice(resp, target, tcp)
+            detect_choice(resp, target, tcp, interface)
             continue
 
         elif choice == 4:

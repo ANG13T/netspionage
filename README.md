@@ -178,7 +178,6 @@ We would love to have you help us with the development of netspionage. Read belo
 
 ## Upcoming
 Here is a list of features we would like to integrate to netspionage in the upcoming versions:
-- fix wlan0 to integrate config file
 - View/Edit config file (configuration.ini) through cli
 - Detect for more OS in scanner (scanner.py -> get_os())
 
