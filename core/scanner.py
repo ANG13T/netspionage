@@ -24,7 +24,8 @@ def scanner_choice(choice, target):
 # Change to the appropriate interface
 interface = "wlan0"
 wifi_scan_timeout = 10
-networks = []
+networks = networks = pandas.DataFrame(columns=["BSSID", "SSID", "dBm_Signal", "Channel", "Crypto"])
+networks.set_index("BSSID", inplace=True)
 
 # Port Scanner Configs
 scan_start = 1
@@ -38,7 +39,6 @@ def network_scanner(target):
 
 # TODO: test with wifi adapter
 def wifi_scanner():
-    config_dataframe()
     initiate_wifi_scan()
 
 def port_scanner(target):
@@ -103,10 +103,6 @@ def initiate_wifi_scan():
     channel_changer.start()
     # start sniffing
     scapy.sniff(prn=extract_network_info, iface=interface)
-
-def config_dataframe():
-    networks = pandas.DataFrame(columns=["BSSID", "SSID", "dBm_Signal", "Channel", "Crypto"])
-    networks.set_index("BSSID", inplace=True)
 
 def extract_network_info(packet):
     if packet.haslayer(scapy.Dot11Beacon):
