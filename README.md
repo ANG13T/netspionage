@@ -48,6 +48,15 @@ python3 netspionage.py
 sudo -E python3 netspionage.py
 ```
 
+## Further Configuration
+```
+For monitoring
+sudo airmon-ng start wlan0 11
+ip a
+find name of network adapter
+set interface = "wlan0mon"
+```
+
 ### Banner
 ```
                 __             _                            

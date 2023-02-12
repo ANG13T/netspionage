@@ -24,6 +24,7 @@ def scanner_choice(choice, target):
 # Change to the appropriate interface
 interface = "wlan0"
 wifi_scan_timeout = 10
+networks = []
 
 # Port Scanner Configs
 scan_start = 1
