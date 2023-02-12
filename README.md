@@ -52,11 +52,18 @@ sudo -E python3 netspionage.py
 
 ## Further Configuration
 ```
-For monitoring
-sudo airmon-ng start wlan0 11
+Ensure your Network Adapter is on Monitor Mode 
+sudo airmon-ng start wlan0
+
 ip a
-find name of network adapter
-set interface = "wlan0mon"
+
+Find name of Network Adapter (ie. wlan0mon)
+
+Set Interface to Name
+
+vim configuration.ini
+
+WiFiInterface=wlan0mon
 ```
 
 ### Banner
