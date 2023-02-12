@@ -24,7 +24,7 @@ def scanner_choice(choice, target):
 # Change to the appropriate interface
 interface = "wlan0"
 wifi_scan_timeout = 10
-networks = networks = pandas.DataFrame(columns=["BSSID", "SSID", "dBm_Signal", "Channel", "Crypto"])
+networks = pandas.DataFrame(columns=["BSSID", "SSID", "RSSI", "Channel", "Encryption"])
 networks.set_index("BSSID", inplace=True)
 
 # Port Scanner Configs
@@ -111,16 +111,16 @@ def extract_network_info(packet):
         # get the name of it
         ssid = packet[scapy.Dot11Elt].info.decode()
         try:
-            dbm_signal = packet.dBm_AntSignal
+            rssi = packet.dBm_AntSignal
         except:
-            dbm_signal = "N/A"
+            rssi = "N/A"
         # extract network stats
         stats = packet[scapy.Dot11Beacon].network_stats()
         # get the channel of the AP
         channel = stats.get("channel")
-        # get the crypto
-        crypto = stats.get("crypto")
-        networks.loc[bssid] = (ssid, dbm_signal, channel, crypto)
+        # get the encryption
+        encryption = stats.get("crypto")
+        networks.loc[bssid] = (ssid, rssi, channel, encryption)
 
 
 def print_all_networks():
