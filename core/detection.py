@@ -18,13 +18,13 @@ TCP = "80"
 
 def arp_detection(target):
     IP = target
-    print_output(" [RUNNING] ARP Spoofing Detector")
+    print_output("\n [RUNNING] ARP Spoofing Detector")
     print_output(" CTRL+C to EXIT")
     sniff(store=False, prn=process_arp, iface=iface)
 
 def tcp_flood_detection(target, tcp):
     TCP = tcp
-    print_output(" [RUNNING] TCP Flood Detector")
+    print_output("\n [RUNNING] TCP Flood Detector")
     print_output(" CTRL+C to EXIT")
     sniff(prn=flow_labels, store=0)
 
