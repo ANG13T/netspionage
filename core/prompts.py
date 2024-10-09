@@ -10,7 +10,7 @@ config.read('configuration.ini')
 interface = config.get('Settings', 'WiFiInterface')    
 
 def print_banner():
-       return ("""
+       return (r"""
                 __             _                            
     ____  ___  / /__________  (_)___  ____  ____ _____ ____ 
    / __ \/ _ \/ __/ ___/ __ \/ / __ \/ __ \/ __ `/ __ `/ _ \\
