@@ -7,16 +7,16 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read('configuration.ini')
-interface = config.get('Settings', 'WiFiInterface')    
+interface = config.get('Settings', 'WiFiInterface')
 
 def print_banner():
        return (r"""
-                __             _                            
-    ____  ___  / /__________  (_)___  ____  ____ _____ ____ 
-   / __ \/ _ \/ __/ ___/ __ \/ / __ \/ __ \/ __ `/ __ `/ _ \\
+                __             _
+    ____  ___  / /__________  (_)___  ____  ____ _____ ____
+   / __ \/ _ \/ __/ ___/ __ \/ / __ \/ __ \/ __ `/ __ `/ _ \
   / / / /  __/ /_(__  ) /_/ / / /_/ / / / / /_/ / /_/ /  __/
- /_/ /_/\___/\__/____/ .___/_/\____/_/ /_/\__,_/\__, /\___/ 
-                    /_/                        /____/           
+ /_/ /_/\___/\__/____/ .___/_/\____/_/ /_/\__,_/\__, /\___/
+                    /_/                        /____/
 """)
 
 def print_details():
@@ -40,7 +40,7 @@ def menu_display():
  4.  EXIT                       Exit from netspionage to your terminal
        """)
 
-def prompt_display():  
+def prompt_display():
     print_output(print_banner())
     print_output(print_details())
     print_output(menu_display())
